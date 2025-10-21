@@ -1,5 +1,4 @@
 package com.danhramtsov.java.essentials;
-
 import java.util.Scanner;
 
 public class SimpleCalculatorTask {
@@ -10,27 +9,38 @@ public class SimpleCalculatorTask {
         String x = sc.nextLine();
         int b = sc.nextInt();
 
+        double result;
+        boolean error = false;
+
         switch (x) {
             case "*":
-                System.out.print(a * b);
+                result = (double) a * b;
                 break;
             case "+":
-                System.out.print(a + b);
+                result = (double) a + b;
                 break;
             case "-":
-                System.out.print(a - b);
+                result = (double) a - b;
                 break;
             case "/":
                 if (b == 0) {
-                    System.out.print("Ошибка!");
+                    error = true;
+                    result = 0;
                 } else {
-                    System.out.print(a / b);
+                    result = (double) a / b;
                 }
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + x);
+                error = true;
+                result = 0;
         }
+
+        if (error) {
+            System.out.println("Ошибка!");
+        } else {
+            System.out.printf("%.2f%n", result);
+        }
+
         sc.close();
     }
 }
-
