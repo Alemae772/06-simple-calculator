@@ -1,46 +1,40 @@
 package com.danhramtsov.java.essentials;
 import java.util.Scanner;
-
 public class SimpleCalculatorTask {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
+        double a = sc.nextDouble();
         sc.nextLine(); // очистка буфера после int
         String x = sc.nextLine();
-        int b = sc.nextInt();
-
-        double result;
+        double b = sc.nextDouble();
+        double result = 0;
         boolean error = false;
-
         switch (x) {
             case "*":
-                result = (double) a * b;
+                System.out.print(a * b);
                 break;
             case "+":
-                result = (double) a + b;
+                System.out.print(a + b);
                 break;
             case "-":
-                result = (double) a - b;
+                System.out.print(a - b);
                 break;
             case "/":
                 if (b == 0) {
-                    error = true;
-                    result = 0;
+                    System.out.print("Ошибка!");
                 } else {
-                    result = (double) a / b;
+                    System.out.print(a / b);
                 }
                 break;
             default:
-                error = true;
-                result = 0;
+                throw new IllegalStateException("Unexpected value: " + x);
         }
-
         if (error) {
             System.out.println("Ошибка!");
         } else {
-            System.out.printf("%.2f%n", result);
+          System.out.printf("%.2f%n", result);
         }
-
         sc.close();
     }
 }
+
