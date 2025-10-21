@@ -3,25 +3,34 @@ package com.danhramtsov.java.essentials;
 import java.util.Scanner;
 
 public class SimpleCalculatorTask {
-    //TODO: реализуйте код ниже
-            public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Введите число 1: ");
-            int a = sc.nextInt();
-            System.out.print("Введите знак: ");
-                int x= sc.nextInt();
-                System.out.print("Введите число 2: ");
-                int b = sc.nextInt();
-            if (x=*),  {System.out.printf(a*b);
-               else
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        sc.nextLine(); // очистка буфера после int
+        String x = sc.nextLine();
+        int b = sc.nextInt();
 
-                System.out.printf("Число " + num + " четное");
-            }
-            else {
-                System.out.printf("Число " + num + " нечетное");
-            }
-            sc.close();
+        switch (x) {
+            case "*":
+                System.out.print(a * b);
+                break;
+            case "+":
+                System.out.print(a + b);
+                break;
+            case "-":
+                System.out.print(a - b);
+                break;
+            case "/":
+                if (b == 0) {
+                    System.out.print("Ошибка!");
+                } else {
+                    System.out.print(a / b);
+                }
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + x);
         }
+        sc.close();
     }
-
 }
+
